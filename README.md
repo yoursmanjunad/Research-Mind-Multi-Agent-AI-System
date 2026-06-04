@@ -4,37 +4,24 @@ An advanced, production-grade automated research pipeline powered by a collabora
 
 ---
 
+## 🎬 Live System Walkthrough
+
+Watch the multi-agent system executing in real-time, displaying search logs, scraped contexts, report formatting, and final quality feedback:
+
+<video src="Assets/Demo.mp4" width="100%" controls></video>
+
+*If the video player above does not load in your markdown viewer, you can access the file directly at [Assets/Demo.mp4](Assets/Demo.mp4).*
+
+---
+
 ## 🏗️ Architecture & System Topology
 
 The system is built on a **Sequential Multi-Agent Pipeline** architecture. Instead of a single LLM trying to search, read, write, and critique in one pass (which leads to hallucination and poor depth), **ResearchMind** splits these concerns into specialized agents and chains that execute sequentially, passing state through a structured schema.
 
-```mermaid
-graph TD
-    User([User Input: Topic]) -->|Triggers Pipeline| SearchAgent[🔍 Step 1: Search Agent]
-    
-    %% Step 1 Web Search
-    SearchAgent -->|Uses Tavily Search Tool| Web[🌐 World Wide Web]
-    Web -->|Returns Titles, Snippets & URLs| SearchAgent
-    SearchAgent -->|State: search_result| ReaderAgent[📄 Step 2: Reader/Scraper Agent]
-    
-    %% Step 2 Web Scraping
-    ReaderAgent -->|Uses BS4 Scraper Tool| WebScrape[🕸️ Target Web Page]
-    WebScrape -->|Returns Cleaned Raw Text| ReaderAgent
-    ReaderAgent -->|State: scraped_content| WriterChain[✍️ Step 3: Writer Chain]
-    
-    %% Step 3 Synthesis Writing
-    WriterChain -->|Synthesizes Search + Scraped Text| ReportDraft[📝 Draft Report]
-    ReportDraft -->|State: report| CriticChain[🧐 Step 4: Critic Chain]
-    
-    %% Step 4 Review & Feedback
-    CriticChain -->|Evaluates report quality (Score/Strengths/Fixes)| ReviewFeedback[📊 Critic Feedback]
-    
-    %% Deliverables
-    ReportDraft -->|Rendered in UI| UI[🔬 Streamlit Interactive Dashboard]
-    ReviewFeedback -->|Rendered in UI| UI
-```
+### System Architecture Diagram
+![System Architecture Diagram](Assets/Architecture.png)
 
----
+
 
 ## ⚡ The Agent & Chain Lineup
 

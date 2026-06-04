@@ -6,11 +6,7 @@ An advanced, production-grade automated research pipeline powered by a collabora
 
 ## 🎬 Live System Walkthrough
 
-Watch the multi-agent system executing in real-time, displaying search logs, scraped contexts, report formatting, and final quality feedback:
-
-<video src="Assets/Demo.mp4" width="100%" controls></video>
-
-*If the video player above does not load in your markdown viewer, you can access the file directly at [Assets/Demo.mp4](Assets/Demo.mp4).*
+ Visit https://multi-agent-project-vjngzkvfktftdvgazw6dtj.streamlit.app/ to access this multi-agent in your browser
 
 ---
 
